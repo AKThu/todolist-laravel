@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Models\Task;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,10 @@ Route::get('/todolist/add', function () {
 
 Route::post('/todolist/add', function () {
     $newTask = new Task();
+    $newTask->user_id = Auth::id();
+    if (is_null(request('task'))) {
+        abort('404');
+    };
     $newTask->task = request('task');
     $newTask->status = 0;
     $newTask->save();

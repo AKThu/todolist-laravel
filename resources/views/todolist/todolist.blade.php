@@ -9,47 +9,54 @@
 </head>
 
 <body class="bg-[#eaeaea] text-[#222222]">
-    <div class="flex flex-col items-center min-h-screen p-4">
+    <x-nav-bar />
+    <div class="flex flex-col items-center min-h-screen p-4 pt-20">
         <h1 class="text-3xl font-medium mb-4">Todo List</h1>
         <div class="bg-[#fafafa] p-4 rounded-md drop-shadow-md w-4/5 flex flex-col items-center">
             @foreach ($tasks as $task)
-                @if ($task->status === 0)
+                @if ($task->status === 0 && $task->user_id === Auth::id())
                     <div
-                         class="flex flex-row justify-between py-1 px-3 my-3 w-full hover:bg-sky-700 hover:text-[#f2f2f2] hover:rounded-lg hover:drop-shadow-lg hover:p-2">
+                         class="flex flex-row justify-between items-center py-2 px-3 my-1 w-full hover:bg-sky-700 hover:text-[#f2f2f2] hover:rounded-lg hover:drop-shadow-lg">
                         <p>{{ $task->task }}</p>
-                        <div class="flex flex-row">
+                        <div class="flex flex-row items-center">
                             <a href="todolist/{{ $task->id }}/edit">
                                 <div class="mx-4">edit</div>
                             </a>
                             <form action="todolist/{{ $task->id }}/update-status" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <button type="submit" class="mx-4">mark as complete</button>
+                                <button type="submit"
+                                        class="mx-4 text-[#FAFAFA] py-1 px-2 rounded-lg bg-green-500">mark as
+                                    complete
+                                </button>
                             </form>
                             <form action="/todolist/{{ $task->id }}/delete" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="mx-4">delete</button>
+                                <button type="submit"
+                                        class="mx-4 text-[#FAFAFA] py-1 px-2 rounded-lg bg-red-500">delete</button>
                             </form>
                         </div>
                     </div>
                 @endif
             @endforeach
             @foreach ($tasks as $task)
-                @if ($task->status === 1)
+                @if ($task->status === 1 && $task->user_id === Auth::id())
                     <div
-                         class="flex flex-row justify-between py-1 px-3 my-3 w-full hover:bg-sky-700 hover:text-[#f2f2f2] hover:rounded-lg hover:drop-shadow-lg hover:p-2 line-through">
+                         class="flex flex-row justify-between items-center py-2 px-3 my-1 w-full hover:bg-sky-700 hover:text-[#f2f2f2] hover:rounded-lg hover:drop-shadow-lg line-through">
                         <p>{{ $task->task }}</p>
-                        <div class="flex flex-row">
+                        <div class="flex flex-row items-center">
                             <form action="todolist/{{ $task->id }}/update-status" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <button type="submit" class="mx-4">mark as uncomplete</button>
+                                <button type="submit" class="mx-4 text-[#FAFAFA] py-1 px-2 rounded-lg bg-red-500">mark
+                                    as uncomplete</button>
                             </form>
                             <form action="/todolist/{{ $task->id }}/delete" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="mx-4">delete</button>
+                                <button type="submit"
+                                        class="mx-4 text-[#FAFAFA] py-1 px-2 rounded-lg bg-red-500">delete</button>
                             </form>
                         </div>
                     </div>
@@ -66,6 +73,9 @@
         </a>
     </div>
 
+
+
+    <script src="../../js/script.js"></script>
 </body>
 
 </html>
