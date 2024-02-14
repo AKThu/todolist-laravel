@@ -23,11 +23,11 @@ Route::get('/', function () {
 Route::get('/todolist', function () {
     $tasks = Task::all();
     return view('todolist.todolist', compact('tasks'));
-});
+})->middleware('auth');
 
 Route::get('/todolist/add', function () {
     return view('todolist.add');
-});
+})->middleware('auth');
 
 Route::post('/todolist/add', function () {
     $newTask = new Task();
@@ -39,32 +39,32 @@ Route::post('/todolist/add', function () {
     $newTask->status = 0;
     $newTask->save();
     return redirect('/todolist');
-});
+})->middleware('auth');
 
 Route::get('todolist/{id}/edit', function ($id) {
     $task = Task::findOrFail($id);
     return view('todolist.edit', compact('task'));
-});
+})->middleware('auth');
 
 Route::put('todolist/{id}/edit', function ($id) {
     $task = Task::findOrFail($id);
     $task->task = request('task');
     $task->save();
     return redirect('/todolist');
-});
+})->middleware('auth');
 
 Route::put('/todolist/{id}/update-status', function ($id) {
     $task = Task::findOrFail($id);
     $task->status = ($task->status === 0) ? 1 : 0;
     $task->save();
     return redirect('/todolist');
-});
+})->middleware('auth');
 
 Route::delete('/todolist/{id}/delete', function ($id) {
     $task = Task::findOrFail($id);
     $task->delete();
     return redirect('/todolist');
-});
+})->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

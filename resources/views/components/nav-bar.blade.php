@@ -6,14 +6,16 @@
         <ul class="flex flex-row mr-8 gap-4 text-[#fafafa]">
             @auth
                 <li onclick="profileWindowToggleController()" class="hover:cursor-pointer font-medium">
-                    <span class=" hover:text-[#cccccc]">{{ Auth::user()->name }}</span>
+                    <span
+                          class="py-2 px-3 rounded-lg drop-shadow-lg font-light bg-[#fafafa] hover:bg-[#dddddd] text-sky-700">{{ Auth::user()->name }}</span>
                     <div id="profileWindow" class="hidden">
-                        <div class="fixed bg-[#fafafa] drop-shadow-md rounded-lg text-sky-700 top-12 right-5">
+                        <div class="fixed bg-[#fafafa] drop-shadow-md rounded-lg text-sky-700 top-12 right-10">
                             <div class="flex flex-col">
-                                <a href="/profile" class="px-4 py-2 hover:bg-[#eaeaea] rounded-t-lg">Profile</a>
+                                <a href="/profile" class="px-4 py-2 hover:bg-[#eaeaea] rounded-t-lg font-light">Profile</a>
+                                <hr class="border-solid border-gray-300 w-full" />
                                 <form action="/logout" method="POST" class="px-4 py-2 hover:bg-[#eaeaea] rounded-b-lg">
                                     @csrf
-                                    <button type="submit">Logout</button>
+                                    <button type="submit" class="font-light">Logout</button>
                                 </form>
                             </div>
                         </div>
