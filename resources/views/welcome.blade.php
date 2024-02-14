@@ -11,8 +11,8 @@
 <body>
     <div class="flex flex-col justify-center items-center font-bold min-h-screen">
         <h1 class="text-5xl mb-8">Todo</h1>
-        <a href="/" class="text-red-600"> >Register< </a>
-                <a href="/" class="text-red-600"> >LogIn< </a>
+        <a href="/" class="text-red-600">>SignUp< </a>
+                <a href="/" class="text-red-600">>LogIn< </a>
     </div>
 </body>
 
