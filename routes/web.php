@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Models\Task;
 use Illuminate\Support\Facades\Route;
 
@@ -20,11 +21,11 @@ Route::get('/', function () {
 
 Route::get('/todolist', function () {
     $tasks = Task::all();
-    return view('todolist', compact('tasks'));
+    return view('todolist.todolist', compact('tasks'));
 });
 
 Route::get('/todolist/add', function () {
-    return view('add');
+    return view('todolist.add');
 });
 
 Route::post('/todolist/add', function () {
@@ -37,7 +38,7 @@ Route::post('/todolist/add', function () {
 
 Route::get('todolist/{id}/edit', function ($id) {
     $task = Task::findOrFail($id);
-    return view('edit', compact('task'));
+    return view('todolist.edit', compact('task'));
 });
 
 Route::put('todolist/{id}/edit', function ($id) {
@@ -59,3 +60,15 @@ Route::delete('/todolist/{id}/delete', function ($id) {
     $task->delete();
     return redirect('/todolist');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__ . '/auth.php';

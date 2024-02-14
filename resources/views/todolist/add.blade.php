@@ -8,8 +8,8 @@
     @vite('resources/css/app.css')
 </head>
 
-<body>
-    <div class="flex flex-col items-center justify-center bg-[#eaeaea] text-[#121212] min-h-screen p-4">
+<body class="bg-[#eaeaea] text-[#222222]">
+    <div class="flex flex-col items-center justify-center min-h-screen p-4">
         <h1 class="text-3xl font-medium mb-8">Add new task</h1>
         <div class="bg-[#fafafa] p-8 rounded-md drop-shadow-md w-2/5 flex flex-col items-center mb-8">
             <form action="/todolist/add" method="post" class="flex flex-col items-center">
@@ -24,7 +24,7 @@
             </form>
         </div>
         <a href="/todolist">
-            <div class="mb-10 hover:text-sky-700"> >Go back< </div>
+            <div class="mb-10 hover:text-red-700"> >Go back< </div>
         </a>
     </div>
 </body>
