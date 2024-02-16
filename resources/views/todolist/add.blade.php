@@ -17,8 +17,9 @@
                 @csrf
                 <div>
                     <label for="task" class="mr-3 text-xl">Task:</label>
-                    <input type="text" name="task" id="task"
+                    <input type="text" name="task" id="task" placeholder="drink water" required
                            class="border-2 border-gray-300 rounded-lg px-2 py-1">
+                    <p class="text-sm text-red-500">{{ session('message') }}</p>
                 </div>
                 <button type="submit"
                         class="mt-8 bg-sky-700 px-3 py-1 rounded-lg text-white w-full hover:bg-sky-800 hover:drop-shadow-lg">Add</button>

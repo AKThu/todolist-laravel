@@ -33,7 +33,7 @@ Route::post('/todolist/add', function () {
     $newTask = new Task();
     $newTask->user_id = Auth::id();
     if (is_null(request('task'))) {
-        abort('404');
+        return redirect('/todolist/add')->with('message', "Task can't be empty");
     };
     $newTask->task = request('task');
     $newTask->status = 0;
@@ -48,6 +48,9 @@ Route::get('todolist/{id}/edit', function ($id) {
 
 Route::put('todolist/{id}/edit', function ($id) {
     $task = Task::findOrFail($id);
+    if (is_null(request('task'))) {
+        return redirect("/todolist/$id/edit")->with('message', "Task can't be empty");
+    };
     $task->task = request('task');
     $task->save();
     return redirect('/todolist');
