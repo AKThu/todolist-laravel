@@ -7,9 +7,9 @@
             @auth
                 <li onclick="profileWindowToggleController()" class="hover:cursor-pointer font-medium">
                     <span
-                          class="py-2 px-3 rounded-lg drop-shadow-lg font-light bg-[#fafafa] hover:bg-[#dddddd] text-sky-700">{{ Auth::user()->name }}</span>
+                          class="py-2 px-3 rounded-lg drop-shadow-lg font-light bg-[#fafafa] hover:bg-[#dddddd] text-gray-700">{{ Auth::user()->name }}</span>
                     <div id="profileWindow" class="hidden">
-                        <div class="fixed bg-[#fafafa] drop-shadow-md rounded-lg text-sky-700 top-12 right-10">
+                        <div class="fixed bg-[#fafafa] drop-shadow-md rounded-lg text-gray-700 top-12 right-10">
                             <div class="flex flex-col">
                                 <a href="/profile" class="px-4 py-2 hover:bg-[#eaeaea] rounded-t-lg font-light">Profile</a>
                                 <hr class="border-solid border-gray-300 w-full" />
