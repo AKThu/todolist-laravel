@@ -12,7 +12,7 @@
     <x-nav-bar />
     <div class="flex flex-col items-center justify-center min-h-screen p-4">
         <h1 class="text-5xl font-extralight text-gray-500 mb-8">Add new task</h1>
-        <div class="bg-[#fafafa] p-8 rounded-md drop-shadow-md w-2/5 flex flex-col items-center mb-8">
+        <div class="bg-[#fafafa] p-8 rounded-md drop-shadow-md w-fit flex flex-col items-center mb-8">
             <form action="/todolist/add" method="post" class="flex flex-col items-center">
                 @csrf
                 <div>
