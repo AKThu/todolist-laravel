@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    // dd(fake()->randomHtml(2, 3));
+    echo "<pre>";
+    var_dump(fake()->randomHtml(5, 3));
+    die();
     return view('welcome');
 });
 
